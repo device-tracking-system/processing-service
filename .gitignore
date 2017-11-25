@@ -1,0 +1,38 @@
+### SCALA ###
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# SBT artifacts
+dist/*
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.history
+.cache
+.lib/
+
+
+### JETBRAINS ###
+
+# Directories
+.idea/
+
+target/
+build/
+out/
+
+# Files
+*.iml
