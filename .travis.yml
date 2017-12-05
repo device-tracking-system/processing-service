@@ -1,0 +1,12 @@
+language: java
+jdk:
+  - oraclejdk8
+
+branches:
+  only:
+    - master
+    - develop
+
+notifications:
+  email: false
+  slack: iosr201718-bgrz:AuPSpSRW4zE4xa5nTSB0tNAK

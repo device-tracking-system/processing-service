@@ -53,20 +53,6 @@
                             <goal>testCompile</goal>
                         </goals>
                     </execution>
-
-                    <execution>
-                        <id>run-scala</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>pl.edu.agh.iet.dts.processing.ProcessingService</mainClass>
-                            <args>
-                                <arg>--spring.config.location=classpath:pl/edu/agh/iet/dts/processing/</arg>
-                            </args>
-                        </configuration>
-                    </execution>
                 </executions>
             </plugin>
 
