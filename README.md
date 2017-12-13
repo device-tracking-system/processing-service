@@ -7,21 +7,22 @@ batches of data for displaying them on a map.
 
 ## Prerequisites
 You need to have the following tools installed and configured:
-  - Java SE 1.8+
-  - Maven 3.0+
-
-Please note that the Scala dependency is satisfied by the Maven build tool.
+  - Scala 2.12.4+
+  - SBT 0.13.16+
 
 ## Installation and Commissioning
+This service is not created as a Spring Boot one, because it is a standalone application, not even exposed to the Web. 
 In order to run the processing service, follow these steps:
-  1. Run the [Configuration Server](https://github.com/device-tracking-system/configuration-server).
-  2. Run the [Service Discovery](https://github.com/device-tracking-system/service-discovery).
-  3. Clone the latest production version of this repository from the `master` branch.
-  4. Navigate to the cloned repository and install all dependencies by typing:
+  1. Clone the latest production version of this repository from the `master` branch.
+  2. Run the MongoDB Server by typing:
 ```
-mvn install
+mongod --dbpath [path to the directory containing database files]
+```
+  3. Run the RabbitMQ Message Broker by typing:
+```
+rabbitmq-server
+```
+  4. Navigate to the cloned repository, then install all dependencies and run the application by typing:
+```
+sbt run
 ``` 
-  5. Run the built `*.jar` file passing the location of configuration files by typing:
-```
-java -jar target/processing-service-1.0-SNAPSHOT.jar --spring.config.location=classpath:pl/edu/agh/iet/dts/processing/
-```
