@@ -8,7 +8,8 @@ val akkaVersion = "2.5.8"
 val akkaHttpVersion = "10.0.11"
 
 resolvers ++= Seq(
-  "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
+  "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
+  Resolver.bintrayRepo("kamon-io", "snapshots")
 )
 
 val processingService = (project in file(".")).enablePlugins(JavaServerAppPackaging)
@@ -32,7 +33,10 @@ val logging = Seq(
 )
 
 val other = Seq(
-"com.rabbitmq" % "amqp-client" % "5.0.0",
+  "io.kamon" %% "kamon-core" % "1.0.0",
+  "io.kamon" %% "kamon-akka-2.5" % "1.0.0",
+  "io.kamon" %% "kamon-zipkin" % "1.0.0",
+  "com.rabbitmq" % "amqp-client" % "5.0.0",
   "org.reactivemongo" %% "reactivemongo" % "0.12.6",
   "org.scalatest" %% "scalatest" % "3.0.1" % "test",
   "org.json4s" %% "json4s-jackson" % "3.5.0",
