@@ -1,6 +1,6 @@
 package actor
 
-import akka.actor.{Actor, PoisonPill, Props}
+import akka.actor.{Actor, ActorLogging, PoisonPill, Props}
 import model.{AckEnvelope, AggregatedResult, ProcessTask, TrackCreated}
 import queue.{MessageProducer, RabbitMQConnection}
 import repository.TrackDAO
@@ -8,11 +8,12 @@ import service.{Point, SignificantPointsService}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class Worker(producer: MessageProducer) extends Actor {
+class Worker(producer: MessageProducer) extends Actor with ActorLogging {
 
   override def receive = {
 
     case AckEnvelope(TrackCreated(ownerId, longitude, latitude), dl) =>
+      log.info(s"Track created: oId: $ownerId, long: $longitude, lat: $latitude, ${self.path}")
       TrackDAO.createTrack(ownerId, longitude, latitude).onComplete(ackAndShutdown(dl))
 
     case AckEnvelope(ProcessTask(ownerId, period, maxPoints, timestamp), dl) =>

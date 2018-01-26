@@ -18,7 +18,7 @@ object TrackDAO {
   implicit def trackHandler = Macros.handler[Track]
 
   def createTrack(ownerId: String, longitude: Double, latitude: Double): Future[WriteResult] =
-    trackCollection.flatMap(a => a.insert(Track(ownerId, longitude, latitude, Instant.now().getEpochSecond)))
+    trackCollection.flatMap(a => a.insert(Track(ownerId, latitude, longitude, Instant.now().getEpochSecond)))
 
   def findTrackByOwnerId(ownerId: String): Future[List[Track]] =
     trackCollection.flatMap(_.find(document("ownerId" -> ownerId)).cursor().collect[List]())

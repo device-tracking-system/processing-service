@@ -6,6 +6,8 @@ object Conf {
 
   val config: Config = ConfigFactory.load()
 
+  val joinRemoteParentsWithSameID = config.getBoolean("kamon.trace.join-remote-parents-with-same-span-id")
+
   val dbHost: String = config.getString("mongo.repliset")
   val dbName: String = config.getString("mongo.name")
   val trackCollectionName: String = config.getString("mongo.collection.track")
