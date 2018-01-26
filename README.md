@@ -9,6 +9,8 @@ batches of data for displaying them on a map.
 You need to have the following tools installed and configured:
   - Scala 2.12.4+
   - SBT 0.13.16+
+  - MongoDB 3.0+
+  - RabbitMQ Server 3.0+
 
 ## Installation and Commissioning
 This service is not created as a Spring Boot one, because it is a standalone application, not even exposed to the Web. 
